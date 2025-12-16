@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionHub | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <section id="header">
+        <a href="#"><h2 class="logo">FashionHub</h2></a>
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fas fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="hero">
+        <h4>Trade-in-offer</h4>
+        <h2>Super value deals</h2>
+        <h1>On all products</h1>
+        <p>Save more with coupons & up to 70% off!</p>
+        <button class="normal" onclick="window.location.href='men.html'">Shop Now</button>
+    </section>
+    
+    <section id="product1" class="section-p1">
+        <div class="section-title">
+            <h2>Featured Products</h2>
+            <p>Summer Collection New Modern Design</p>
+        </div>
+        <div class="pro-container">
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/f1.jpg" alt="">
+                <div class="des">
+                    <span>Adidas</span>
+                    <h5>Cartoon Astronaut T-Shirts</h5>
+                    <h4>$78</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/f2.jpg" alt="">
+                <div class="des">
+                    <span>Zara</span>
+                    <h5>Floral Summer Shirt</h5>
+                    <h4>$65</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+             <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/f3.jpg" alt="">
+                <div class="des">
+                    <span>H&M</span>
+                    <h5>Cotton Basic Shirt</h5>
+                    <h4>$55</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/f5.jpg" alt="">
+                <div class="des">
+                    <span>Levis</span>
+                    <h5>Blue Sweatshirt</h5>
+                    <h4>$95</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
+            <p><strong>Phone:</strong> +01 2222 365 / (+91) 01 2345 6789</p>
+        </div>
+    </footer>
+
+    <script>
+        function loadProduct(element) {
+            const img = element.querySelector('img').src;
+            const name = element.querySelector('h5').innerText;
+            const price = element.querySelector('h4').innerText;
+            window.location.href = `sproduct.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}`;
+        }
+
+        const bar = document.getElementById('bar');
+        const close = document.getElementById('close');
+        const nav = document.getElementById('navbar');
+        if (bar) { bar.addEventListener('click', () => { nav.classList.add('active'); }) }
+        if (close) { close.addEventListener('click', () => { nav.classList.remove('active'); }) }
+    </script>
+</body>
+</html>

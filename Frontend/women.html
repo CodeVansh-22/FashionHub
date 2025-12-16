@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionHub | Women</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <section id="header">
+        <a href="index.html"><h2 class="logo">FashionHub</h2></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a class="active" href="women.html">Women</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <a href="#" id="close"><i class="fas fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/banner1.jpg');">
+        <h2>#BeBeautiful</h2>
+        <p>Save more with coupons & up to 70% off!</p>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <div class="pro-container">
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/p1.png" alt="">
+                <div class="des">
+                    <span>H&M</span>
+                    <h5>Beige Winter Coat</h5>
+                    <h4>$120</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/p2.png" alt="">
+                <div class="des">
+                    <span>Zara</span>
+                    <h5>Denim Jacket Style</h5>
+                    <h4>$85</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/p3.png" alt="">
+                <div class="des">
+                    <span>Adidas</span>
+                    <h5>Grey Hoodie</h5>
+                    <h4>$60</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/p4.png" alt="">
+                <div class="des">
+                    <span>Prada</span>
+                    <h5>Black Sweatshirt</h5>
+                    <h4>$70</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/p5.png" alt="">
+                <div class="des">
+                    <span>Mango</span>
+                    <h5>Striped Tee</h5>
+                    <h4>$35</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/p6.png" alt="">
+                <div class="des">
+                    <span>Levis</span>
+                    <h5>Classic Denim Jacket</h5>
+                    <h4>$95</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/p7.png" alt="">
+                <div class="des">
+                    <span>Zara</span>
+                    <h5>Boho Chic Top</h5>
+                    <h4>$55</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+            <div class="pro" onclick="loadProduct(this)">
+                <img src="assets/p8.png" alt="">
+                <div class="des">
+                    <span>H&M</span>
+                    <h5>Floral Summer Dress</h5>
+                    <h4>$65</h4>
+                </div>
+                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
+            <p><strong>Phone:</strong> +01 2222 365</p>
+        </div>
+    </footer>
+
+    <script>
+        function loadProduct(element) {
+            const img = element.querySelector('img').src;
+            const name = element.querySelector('h5').innerText;
+            const price = element.querySelector('h4').innerText;
+            window.location.href = `sproduct.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}`;
+        }
+
+        const bar = document.getElementById('bar');
+        const close = document.getElementById('close');
+        const nav = document.getElementById('navbar');
+        if (bar) { bar.addEventListener('click', () => { nav.classList.add('active'); }) }
+        if (close) { close.addEventListener('click', () => { nav.classList.remove('active'); }) }
+    </script>
+</body>
+</html>
