@@ -48,9 +48,10 @@
         </div>
 
         <div class="single-pro-details">
-            <h6>Home / Fashion</h6>
+            <h6>Home / Product Details</h6>
             <h4 id="proName">Product Name</h4>
             <h2 id="proPrice">$0.00</h2>
+            
             <select id="proSize">
                 <option>Select Size</option>
                 <option>XL</option>
@@ -58,17 +59,18 @@
                 <option>Small</option>
                 <option>Large</option>
             </select>
+            
             <input type="number" value="1" id="proQty">
             <button class="normal" id="addToCartBtn">Add To Cart</button>
             <h4>Product Details</h4>
-            <span>High-quality fabric designed for comfort and style. Perfect for casual or formal occasions. Machine washable and durable.</span>
+            <span>High-quality material designed for comfort and style. Perfect for casual or formal occasions. Durable and premium finish.</span>
         </div>
     </section>
 
     <section id="product1" class="section-p1">
         <h2 class="section-title">Related Products</h2>
         <div class="pro-container">
-            <div class="pro" onclick="window.location.href='men.html';">
+            <div class="pro" onclick="window.location.href='index.html';">
                 <img src="assets/n1.jpg" alt="">
                 <div class="des">
                     <span>Adidas</span>
@@ -77,7 +79,7 @@
                 </div>
                 <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
             </div>
-            <div class="pro" onclick="window.location.href='men.html';">
+            <div class="pro" onclick="window.location.href='index.html';">
                 <img src="assets/n2.jpg" alt="">
                 <div class="des">
                     <span>Adidas</span>
@@ -86,7 +88,7 @@
                 </div>
                 <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
             </div>
-            <div class="pro" onclick="window.location.href='men.html';">
+            <div class="pro" onclick="window.location.href='index.html';">
                 <img src="assets/n3.jpg" alt="">
                 <div class="des">
                     <span>Adidas</span>
@@ -95,7 +97,7 @@
                 </div>
                 <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
             </div>
-            <div class="pro" onclick="window.location.href='men.html';">
+            <div class="pro" onclick="window.location.href='index.html';">
                 <img src="assets/n4.jpg" alt="">
                 <div class="des">
                     <span>Adidas</span>
@@ -117,25 +119,39 @@
 
     <script>
         // --- 1. DYNAMIC PRODUCT LOADING ---
-        // Parse URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const name = urlParams.get('name');
         const price = urlParams.get('price');
         const img = urlParams.get('img');
+        const cat = urlParams.get('cat'); // Get Category (e.g., 'shoes')
 
-        // Update Elements if data exists
+        // Update Text and Image
         if(name) document.getElementById('proName').innerText = name;
         if(price) document.getElementById('proPrice').innerText = price;
         if(img) {
             document.getElementById('MainImg').src = img;
-            // Also update thumbnails for consistency
             var thumbnails = document.getElementsByClassName('small-img');
             for(var i=0; i<thumbnails.length; i++){
                 thumbnails[i].src = img;
             }
         }
 
-        // --- 2. ADD TO CART LOGIC (Same as before) ---
+        // --- 2. SWITCH SIZES IF SHOES ---
+        if (cat === 'shoes') {
+            const sizeSelect = document.getElementById('proSize');
+            // Overwrite inner HTML with shoe sizes
+            sizeSelect.innerHTML = `
+                <option>Select Size</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            `;
+        }
+
+        // --- 3. ADD TO CART LOGIC ---
         const addToCartBtn = document.getElementById('addToCartBtn');
         addToCartBtn.addEventListener('click', () => {
             const size = document.getElementById('proSize').value;
@@ -157,7 +173,7 @@
             window.location.href = "cart.html";
         });
 
-        // --- 3. NAVBAR LOGIC ---
+        // --- 4. NAVBAR LOGIC ---
         const bar = document.getElementById('bar');
         const close = document.getElementById('close');
         const nav = document.getElementById('navbar');

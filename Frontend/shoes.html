@@ -122,7 +122,9 @@
             const img = element.querySelector('img').src;
             const name = element.querySelector('h5').innerText;
             const price = element.querySelector('h4').innerText;
-            window.location.href = `sproduct.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}`;
+            
+            // --- UPDATED LINE BELOW: Added &cat=shoes ---
+            window.location.href = `sproduct.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}&cat=shoes`;
         }
 
         const bar = document.getElementById('bar');
