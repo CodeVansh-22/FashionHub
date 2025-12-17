@@ -146,11 +146,13 @@
         }
 
         cart.forEach((item, index) => {
-          // IMPORTANT: Replace ₹ instead of $
+          // IMPORTANT: Clean the price string (Remove ₹, $, and commas)
           let priceStr = item.price
             .toString()
             .replace("₹", "")
-            .replace("$", "");
+            .replace("$", "")
+            .replace(/,/g, ""); // This removes commas so parseFloat works correctly
+            
           let priceNum = parseFloat(priceStr);
 
           let subtotal = priceNum * item.quantity;
@@ -165,13 +167,15 @@
                     <td><input type="number" value="${
                       item.quantity
                     }" readonly></td>
-                    <td>₹${subtotal.toFixed(2)}</td>
+                    <td>₹${subtotal.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
                 `;
           cartBody.appendChild(row);
         });
 
-        subtotalEl.innerText = `₹ ${totalAmount.toFixed(2)}`;
-        totalEl.innerHTML = `<strong>₹ ${totalAmount.toFixed(2)}</strong>`;
+        // Display totals with Indian formatting
+        let totalFormatted = totalAmount.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        subtotalEl.innerText = `₹ ${totalFormatted}`;
+        totalEl.innerHTML = `<strong>₹ ${totalFormatted}</strong>`;
       }
 
       function removeItem(index) {
