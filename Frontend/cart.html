@@ -104,8 +104,6 @@
             let count = cart.length;
             let badgeLg = document.getElementById('cart-badge-lg');
             if(badgeLg) badgeLg.innerText = count;
-            let badgeSm = document.getElementById('cart-badge-sm');
-            if(badgeSm) badgeSm.innerText = count;
       }
       window.onload = updateCartBadge;
 
@@ -162,7 +160,6 @@
             alert("Your cart is empty!");
         } else {
             alert("Order placed successfully! Redirecting...");
-            // Simulate clearing cart after order
             localStorage.removeItem('cart');
             window.location.href = 'index.html'; 
         }
