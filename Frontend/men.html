@@ -16,12 +16,20 @@
                 <li><a class="active" href="men.html">Men</a></li>
                 <li><a href="women.html">Women</a></li>
                 <li><a href="shoes.html">Shoes</a></li>
-                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+                <li id="lg-bag">
+                    <a href="cart.html">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-badge" id="cart-badge-lg">0</span>
+                    </a>
+                </li>
                 <a href="#" id="close"><i class="fas fa-times"></i></a>
             </ul>
         </div>
         <div id="mobile">
-            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="cart.html">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" id="cart-badge-sm">0</span>
+            </a>
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </section>
@@ -148,6 +156,20 @@
     </footer>
 
     <script>
+        // --- BADGE UPDATE LOGIC ---
+        function updateCartBadge() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let count = cart.length;
+            
+            let badgeLg = document.getElementById('cart-badge-lg');
+            if(badgeLg) badgeLg.innerText = count;
+
+            let badgeSm = document.getElementById('cart-badge-sm');
+            if(badgeSm) badgeSm.innerText = count;
+        }
+
+        window.onload = updateCartBadge;
+
         function loadProduct(element) {
             const img = element.getElementsByTagName('img')[0].src;
             const name = element.getElementsByTagName('h5')[0].innerText;
@@ -155,18 +177,40 @@
             window.location.href = `sproduct.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}`;
         }
         
+        // --- ADD TO CART WITH SIZE PROMPT ---
         function addToCart(event, btn, action) {
             event.stopPropagation();
+
+            let size = prompt("Please select a size (S, M, L, XL, XXL):", "M");
+            if (size == null || size.trim() === "") {
+                return; // Cancelled
+            }
+
             const parent = btn.closest('.pro');
             const img = parent.querySelector('img').src;
             const name = parent.querySelector('h5').innerText;
             const price = parent.querySelector('h4').innerText;
 
-            const product = { id: Date.now(), image: img, name: name, price: price, size: "Select Size", quantity: 1 };
+            const product = { 
+                id: Date.now(), 
+                image: img, 
+                name: name, 
+                price: price, 
+                size: size.toUpperCase(), 
+                quantity: 1 
+            };
+
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             cart.push(product);
             localStorage.setItem('cart', JSON.stringify(cart));
-            if (action === 'buy') { window.location.href = 'cart.html'; } else { alert('Item added to cart!'); }
+            
+            updateCartBadge(); // Update badge immediately
+
+            if (action === 'buy') { 
+                window.location.href = 'cart.html'; 
+            } else { 
+                alert('Item added to cart!'); 
+            }
         }
 
         const bar = document.getElementById('bar');

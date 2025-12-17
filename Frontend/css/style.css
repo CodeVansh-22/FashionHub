@@ -1,22 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
-  /* --- Modern Dark Palette --- */
-  --bg-body: #0b0c15;       /* Deepest Indigo/Black */
-  --bg-card: #15161f;       /* Slightly lighter for cards */
+  /* Modern Dark Palette */
+  --bg-body: #0b0c15;
+  --bg-card: #15161f;
   --text-main: #ffffff;
   --text-muted: #8b8b9e;
-  
-  /* --- Vibrant Accents --- */
-  --neon-cyan: #00f2ea;     /* For outlines / highlights */
-  --neon-purple: #7000ff;   /* Primary accent */
-  --neon-pink: #ff0055;     /* Secondary accent */
-  
-  /* --- Gradients --- */
+
+  /* Vibrant Accents */
+  --neon-cyan: #00f2ea;
+  --neon-purple: #7000ff;
+  --neon-pink: #ff0055;
+
+  /* Gradients */
   --grad-primary: linear-gradient(135deg, #7000ff 0%, #ff0055 100%);
   --grad-hover: linear-gradient(135deg, #5a00cc 0%, #cc0044 100%);
-  
-  /* --- Effects --- */
+
+  /* Effects */
   --glass-bg: rgba(21, 22, 31, 0.85);
   --glass-border: 1px solid rgba(255, 255, 255, 0.1);
   --shadow-glow: 0 0 15px rgba(112, 0, 255, 0.3);
@@ -33,10 +33,15 @@ body {
   background-color: var(--bg-body);
   color: var(--text-main);
   width: 100%;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--text-main);
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -59,29 +64,28 @@ img {
   display: block;
 }
 
-/* --- Header (Glassmorphism) --- */
+/* --- Header --- */
 #header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 15px 60px;
   background: var(--glass-bg);
-  backdrop-filter: blur(10px); /* Frosted glass effect */
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   position: sticky;
   top: 0;
   z-index: 999;
   border-bottom: var(--glass-border);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
   background: var(--grad-primary);
-  background-clip: text;              /* standard */
-  -webkit-background-clip: text;      /* webkit */
+  -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
 
 #navbar {
   display: flex;
@@ -108,16 +112,44 @@ img {
   text-shadow: 0 0 8px rgba(0, 242, 234, 0.6);
 }
 
+/* Cart Count Badge */
+#navbar li .cart-badge {
+  position: absolute;
+  top: -8px;
+  right: 5px;
+  background-color: var(--neon-pink);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px var(--neon-pink);
+}
+
 #mobile {
   display: none;
   align-items: center;
+  position: relative;
+}
+
+#mobile .cart-badge {
+  position: absolute;
+  top: -5px;
+  right: 45px;
+  /* Adjust based on icon position */
+  background-color: var(--neon-pink);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 50%;
 }
 
 #close {
   display: none;
 }
 
-/* --- Hero Section --- */
+/* --- Hero --- */
 #hero {
   height: 90vh;
   width: 100%;
@@ -146,7 +178,7 @@ img {
 }
 
 #hero h1 span {
-    color: var(--neon-purple);
+  color: var(--neon-purple);
 }
 
 #hero button {
@@ -156,7 +188,7 @@ img {
   padding: 14px 45px;
   font-size: 15px;
   font-weight: 700;
-  border-radius: 50px; /* Pill shape */
+  border-radius: 50px;
   cursor: pointer;
   transition: 0.3s ease;
   box-shadow: 0 5px 15px rgba(255, 0, 85, 0.4);
@@ -167,7 +199,7 @@ img {
   box-shadow: 0 10px 25px rgba(255, 0, 85, 0.6);
 }
 
-/* --- Products Section --- */
+/* --- Products --- */
 .section-p1 {
   padding: 60px 80px;
 }
@@ -188,7 +220,6 @@ img {
   gap: 25px;
 }
 
-/* Modern Card Design */
 .pro {
   background: var(--bg-card);
   border: var(--glass-border);
@@ -230,7 +261,6 @@ img {
   margin-bottom: 5px;
 }
 
-/* Price Styling */
 .pro .des h4 {
   font-size: 18px;
   font-weight: 700;
@@ -238,14 +268,13 @@ img {
   text-shadow: 0 0 5px rgba(0, 242, 234, 0.3);
 }
 
-/* --- NEW BUTTON STYLES (Contrast) --- */
+/* Buttons */
 .action-buttons {
   display: flex;
   gap: 10px;
   margin-top: 15px;
 }
 
-/* Add to Cart: Outline Style (Cyan) */
 .btn-cart {
   flex: 1;
   background: transparent !important;
@@ -266,7 +295,6 @@ img {
   box-shadow: 0 0 10px var(--neon-cyan);
 }
 
-/* Buy Now: Gradient Style (Purple/Pink) */
 .btn-buy {
   flex: 1;
   background: var(--grad-primary) !important;
@@ -286,7 +314,7 @@ img {
   box-shadow: 0 0 15px rgba(255, 0, 85, 0.5);
 }
 
-/* --- Single Product Page (sproduct.html) --- */
+/* --- Single Product --- */
 #prodetails {
   display: flex;
   margin-top: 40px;
@@ -302,8 +330,8 @@ img {
 }
 
 #prodetails .single-pro-image img {
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
 .small-img-group {
@@ -321,18 +349,12 @@ img {
 }
 
 .small-img-col:hover {
-    border-color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
 }
 
 #prodetails .single-pro-details {
   width: 50%;
   padding-top: 20px;
-}
-
-#prodetails h6 {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 20px;
 }
 
 #prodetails h4 {
@@ -346,7 +368,7 @@ img {
   margin-bottom: 25px;
 }
 
-#prodetails select, 
+#prodetails select,
 #prodetails input {
   display: block;
   padding: 12px;
@@ -375,26 +397,117 @@ img {
 
 /* --- Cart Page --- */
 #cart {
-    background: var(--bg-card);
-    margin: 40px 80px;
-    padding: 30px;
-    border-radius: 15px;
-    border: var(--glass-border);
+  background: var(--bg-card);
+  margin: 40px 80px;
+  padding: 30px;
+  border-radius: 15px;
+  border: var(--glass-border);
+  overflow-x: auto;
 }
+
 #cart table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
 }
+
+/* FIXED: Ensure cart images are small */
+#cart table img {
+  width: 50px;
+  height: auto;
+  border-radius: 5px;
+}
+
 #cart table thead td {
-    color: var(--neon-cyan);
-    font-weight: 700;
-    border-bottom: 1px solid #333;
-    padding: 15px 0;
+  color: var(--neon-cyan);
+  font-weight: 700;
+  border-bottom: 1px solid #333;
+  padding: 15px 0;
 }
+
 #cart table tbody td {
-    color: var(--text-main);
-    padding: 20px 0;
-    border-bottom: 1px solid #222;
+  color: var(--text-main);
+  padding: 20px 0;
+  border-bottom: 1px solid #222;
+  font-size: 14px;
+}
+
+#cart table td:nth-child(1) {
+  width: 50px;
+  text-align: center;
+}
+
+/* Remove icon */
+#cart table td:nth-child(2) {
+  width: 70px;
+}
+
+/* Image col */
+#cart table td:nth-child(3) {
+  text-align: left;
+  padding-left: 10px;
+}
+
+/* Product Name */
+
+#cart-add {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#coupon {
+  width: 50%;
+  margin-bottom: 30px;
+}
+
+#coupon h3,
+#subtotal h3 {
+  padding-bottom: 15px;
+}
+
+#coupon input {
+  padding: 10px 20px;
+  outline: none;
+  width: 60%;
+  margin-right: 10px;
+  border: 1px solid #333;
+  background: #000;
+  color: #fff;
+  border-radius: 4px;
+}
+
+#coupon button,
+#subtotal button {
+  background-color: var(--neon-cyan);
+  color: #000;
+  padding: 12px 20px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#subtotal {
+  width: 50%;
+  margin-bottom: 30px;
+  border: 1px solid #333;
+  padding: 30px;
+  border-radius: 8px;
+  background: #000;
+}
+
+#subtotal table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#subtotal table td {
+  width: 50%;
+  border: 1px solid #333;
+  padding: 10px;
+  font-size: 13px;
 }
 
 /* --- Footer --- */
@@ -410,15 +523,12 @@ footer h4 {
   color: var(--neon-cyan);
 }
 
-/* =========================================
-   MOBILE RESPONSIVENESS (Optimized)
-   ========================================= */
+/* --- Mobile --- */
 @media (max-width: 799px) {
   .section-p1 {
     padding: 40px 20px;
   }
-  
-  /* Modern Side Menu */
+
   #navbar {
     display: flex;
     flex-direction: column;
@@ -431,7 +541,7 @@ footer h4 {
     width: 260px;
     background-color: var(--bg-card);
     border-left: 1px solid #333;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
     padding: 80px 0 0 25px;
     transition: 0.3s;
     z-index: 1000;
@@ -440,16 +550,12 @@ footer h4 {
   #navbar.active {
     right: 0px;
   }
-  
-  #navbar li {
-      margin-bottom: 25px;
-  }
 
   #mobile {
     display: flex;
     gap: 20px;
   }
-  
+
   #mobile i {
     color: var(--text-main);
     font-size: 22px;
@@ -464,12 +570,11 @@ footer h4 {
     font-size: 24px;
     cursor: pointer;
   }
-  
+
   #lg-bag {
     display: none;
   }
 
-  /* Grid Layout for Mobile */
   .pro-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -479,45 +584,28 @@ footer h4 {
   .pro {
     padding: 10px;
   }
-  
-  /* Buttons Stacked or Compact */
+
   .action-buttons {
-      gap: 6px;
-  }
-  .btn-cart, .btn-buy {
-      font-size: 10px;
-      padding: 8px 0;
+    gap: 6px;
   }
 
-  /* --- Sproduct Mobile Fix --- */
-  #prodetails {
-    display: flex;
-    flex-direction: column; /* Stack image and text */
-    padding: 20px;
-    margin-top: 20px;
-  }
-  
-  #prodetails .single-pro-image {
-    width: 100%;
-    margin-right: 0;
-    margin-bottom: 30px;
-  }
-  
-  #prodetails .single-pro-details {
-    width: 100%;
-    padding-top: 0;
+  .btn-cart,
+  .btn-buy {
+    font-size: 10px;
+    padding: 8px 0;
   }
 
-  /* Cart Mobile */
   #cart {
-      margin: 20px 0;
-      padding: 15px;
-      overflow-x: scroll;
+    margin: 20px 0;
+    padding: 15px;
   }
+
   #cart-add {
-      flex-direction: column;
+    flex-direction: column;
   }
-  #coupon, #subtotal {
-      width: 100%;
+
+  #coupon,
+  #subtotal {
+    width: 100%;
   }
 }

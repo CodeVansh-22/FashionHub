@@ -4,20 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FashionHub | Cart</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link rel="stylesheet" href="css/style.css" />
-    <style>
-      #cart table input {
-        background-color: var(--bg-surface);
-        color: var(--text-main);
-        border: 1px solid var(--border);
-        padding: 5px;
-        text-align: center;
-      }
-    </style>
   </head>
   <body>
     <section id="header">
@@ -29,29 +17,24 @@
           <li><a href="women.html">Women</a></li>
           <li><a href="shoes.html">Shoes</a></li>
           <li id="lg-bag">
-            <a class="active" href="cart.html"
-              ><i class="fa-solid fa-bag-shopping"></i
-            ></a>
+            <a class="active" href="cart.html">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" id="cart-badge-lg">0</span>
+            </a>
           </li>
           <a href="#" id="close"><i class="fas fa-times"></i></a>
         </ul>
       </div>
       <div id="mobile">
-        <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        <a href="cart.html">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-badge" id="cart-badge-sm">0</span>
+        </a>
         <i id="bar" class="fas fa-outdent"></i>
       </div>
     </section>
 
-    <section
-      id="page-header"
-      style="
-        background-image: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-          ),
-          url('assets/banner2.jpg');
-      "
-    >
+    <section id="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/banner2.jpg');">
       <h2>#Cart</h2>
       <p>Add your coupon code & SAVE upto 70%!</p>
     </section>
@@ -64,7 +47,7 @@
             <td>Image</td>
             <td>Product</td>
             <td>Price</td>
-            <td>Quantity</td>
+            <td>Qty</td>
             <td>Subtotal</td>
           </tr>
         </thead>
@@ -97,17 +80,14 @@
             <td id="cart-total"><strong>₹ 0.00</strong></td>
           </tr>
         </table>
-        <button class="normal">Proceed to checkout</button>
+        <button class="normal" onclick="proceedToCheckout()">Proceed to checkout</button>
       </div>
     </section>
 
     <footer class="section-p1">
       <div class="col">
         <h4>Contact</h4>
-        <p>
-          <strong>Address:</strong> 562 Wellington Road, Street 32, San
-          Francisco
-        </p>
+        <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
         <p><strong>Phone:</strong> +01 2222 365</p>
       </div>
     </footer>
@@ -116,16 +96,18 @@
       const bar = document.getElementById("bar");
       const close = document.getElementById("close");
       const nav = document.getElementById("navbar");
-      if (bar) {
-        bar.addEventListener("click", () => {
-          nav.classList.add("active");
-        });
+      if (bar) { bar.addEventListener("click", () => { nav.classList.add("active"); }); }
+      if (close) { close.addEventListener("click", () => { nav.classList.remove("active"); }); }
+
+      function updateCartBadge() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let count = cart.length;
+            let badgeLg = document.getElementById('cart-badge-lg');
+            if(badgeLg) badgeLg.innerText = count;
+            let badgeSm = document.getElementById('cart-badge-sm');
+            if(badgeSm) badgeSm.innerText = count;
       }
-      if (close) {
-        close.addEventListener("click", () => {
-          nav.classList.remove("active");
-        });
-      }
+      window.onload = updateCartBadge;
 
       const cartBody = document.getElementById("cart-body");
       const subtotalEl = document.getElementById("cart-subtotal");
@@ -133,46 +115,34 @@
 
       function renderCart() {
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
         cartBody.innerHTML = "";
         let totalAmount = 0;
 
         if (cart.length === 0) {
-          cartBody.innerHTML =
-            '<tr><td colspan="6" style="text-align:center; padding:20px;">Your cart is empty.</td></tr>';
+          cartBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">Your cart is empty.</td></tr>';
           subtotalEl.innerText = "₹ 0.00";
           totalEl.innerText = "₹ 0.00";
           return;
         }
 
         cart.forEach((item, index) => {
-          // IMPORTANT: Clean the price string (Remove ₹, $, and commas)
-          let priceStr = item.price
-            .toString()
-            .replace("₹", "")
-            .replace("$", "")
-            .replace(/,/g, ""); // This removes commas so parseFloat works correctly
-            
+          let priceStr = item.price.toString().replace("₹", "").replace("$", "").replace(/,/g, "");
           let priceNum = parseFloat(priceStr);
-
           let subtotal = priceNum * item.quantity;
           totalAmount += subtotal;
 
           let row = document.createElement("tr");
           row.innerHTML = `
-                    <td><a href="#" onclick="removeItem(${index})"><i class="far fa-times-circle" style="color: #E0E0E0; font-size: 20px;"></i></a></td>
-                    <td><img src="${item.image}" alt=""></td>
-                    <td>${item.name} <br> <small>Size: ${item.size}</small></td>
-                    <td>${item.price}</td>
-                    <td><input type="number" value="${
-                      item.quantity
-                    }" readonly></td>
-                    <td>₹${subtotal.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</td>
-                `;
+            <td><a href="#" onclick="removeItem(${index})"><i class="far fa-times-circle" style="color: #ff0055; font-size: 20px;"></i></a></td>
+            <td><img src="${item.image}" alt=""></td>
+            <td>${item.name}<br><small>Size: ${item.size}</small></td>
+            <td>${item.price}</td>
+            <td><input type="number" value="${item.quantity}" readonly style="width: 40px; padding: 5px; text-align: center; background: #000; color: #fff; border: 1px solid #333;"></td>
+            <td>₹${subtotal.toLocaleString('en-IN')}</td>
+          `;
           cartBody.appendChild(row);
         });
 
-        // Display totals with Indian formatting
         let totalFormatted = totalAmount.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         subtotalEl.innerText = `₹ ${totalFormatted}`;
         totalEl.innerHTML = `<strong>₹ ${totalFormatted}</strong>`;
@@ -183,6 +153,19 @@
         cart.splice(index, 1);
         localStorage.setItem("cart", JSON.stringify(cart));
         renderCart();
+        updateCartBadge();
+      }
+
+      function proceedToCheckout() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        if(cart.length === 0) {
+            alert("Your cart is empty!");
+        } else {
+            alert("Order placed successfully! Redirecting...");
+            // Simulate clearing cart after order
+            localStorage.removeItem('cart');
+            window.location.href = 'index.html'; 
+        }
       }
       
       renderCart();
