@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionHub | Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <section id="header">
+        <a href="index.html"><h2 class="logo">FashionHub</h2></a>
+        <div>
+            <ul id="navbar">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li id="lg-bag">
+                    <a href="cart.html">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-badge" id="cart-badge-lg">0</span>
+                    </a>
+                </li>
+                <a href="#" id="close"><i class="fas fa-times"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge" id="cart-badge-sm">0</span>
+            </a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="form-page">
+        <div class="form-box">
+            <h2>Welcome Back</h2>
+            <p>Enter your credentials to access your account.</p>
+            
+            <form onsubmit="handleLogin(event)">
+                <div class="form-element">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="e.g., vansh@example.com" required>
+                </div>
+                <div class="form-element">
+                    <label>Password</label>
+                    <input type="password" placeholder="Enter your password" required>
+                </div>
+                
+                <button type="submit" class="form-btn">Log In</button>
+            </form>
+
+            <div class="form-link">
+                Don't have an account? <a href="register.html">Sign Up</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
+            <p><strong>Phone:</strong> +01 2222 365</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Badge Logic
+        function updateCartBadge() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let count = cart.length;
+            let badgeLg = document.getElementById('cart-badge-lg');
+            if(badgeLg) badgeLg.innerText = count;
+            let badgeSm = document.getElementById('cart-badge-sm');
+            if(badgeSm) badgeSm.innerText = count;
+        }
+        window.onload = updateCartBadge;
+
+        // Login Logic (Simulated)
+        function handleLogin(e) {
+            e.preventDefault();
+            // Here you would check credentials
+            alert("Login Successful! Redirecting to Home...");
+            window.location.href = "index.html";
+        }
+
+        // Mobile Nav
+        const bar = document.getElementById('bar');
+        const close = document.getElementById('close');
+        const nav = document.getElementById('navbar');
+        if (bar) { bar.addEventListener('click', () => { nav.classList.add('active'); }) }
+        if (close) { close.addEventListener('click', () => { nav.classList.remove('active'); }) }
+    </script>
+</body>
+</html>

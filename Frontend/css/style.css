@@ -610,3 +610,115 @@ footer h4 {
     width: 100%;
   }
 }
+/* =========================================
+   LOGIN & REGISTER PAGE STYLES
+   ========================================= */
+
+#form-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-image: linear-gradient(rgba(11, 12, 21, 0.8), rgba(11, 12, 21, 0.9)), url("../assets/banner1.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+}
+
+.form-box {
+    background: rgba(21, 22, 31, 0.75); /* Dark Glass */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(112, 0, 255, 0.2);
+    text-align: center;
+}
+
+.form-box h2 {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.form-box p {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.form-element {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-element label {
+    display: block;
+    color: var(--neon-cyan);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-element input {
+    width: 100%;
+    padding: 12px 15px;
+    background: #0b0c15;
+    border: 1px solid #333;
+    border-radius: 5px;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-element input:focus {
+    border-color: var(--neon-purple);
+    box-shadow: 0 0 8px rgba(112, 0, 255, 0.3);
+}
+
+.form-btn {
+    width: 100%;
+    background: var(--grad-primary);
+    color: #fff;
+    border: none;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.form-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 85, 0.4);
+}
+
+.form-link {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.form-link a {
+    color: var(--neon-cyan);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 450px) {
+    #form-page {
+        padding: 20px;
+    }
+    .form-box {
+        padding: 30px 20px;
+    }
+}
