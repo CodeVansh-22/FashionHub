@@ -76,12 +76,12 @@ img {
 }
 
 .logo {
-  font-size: 26px;
-  font-weight: 800;
   background: var(--grad-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Gradient Text */
+  background-clip: text;              /* standard */
+  -webkit-background-clip: text;      /* webkit */
+  -webkit-text-fill-color: transparent;
 }
+
 
 #navbar {
   display: flex;
