@@ -1,156 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FashionHub | Cart</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
     <style>
-        #cart table input {
-            background-color: var(--bg-surface);
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            padding: 5px;
-            text-align: center;
-        }
+      #cart table input {
+        background-color: var(--bg-surface);
+        color: var(--text-main);
+        border: 1px solid var(--border);
+        padding: 5px;
+        text-align: center;
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <section id="header">
-        <a href="index.html"><h2 class="logo">FashionHub</h2></a>
-        <div>
-            <ul id="navbar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="men.html">Men</a></li>
-                <li><a href="women.html">Women</a></li>
-                <li><a href="shoes.html">Shoes</a></li>
-                <li id="lg-bag"><a class="active" href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
-                <a href="#" id="close"><i class="fas fa-times"></i></a>
-            </ul>
-        </div>
-        <div id="mobile">
-            <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
-            <i id="bar" class="fas fa-outdent"></i>
-        </div>
+      <a href="index.html"><h2 class="logo">FashionHub</h2></a>
+      <div>
+        <ul id="navbar">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="men.html">Men</a></li>
+          <li><a href="women.html">Women</a></li>
+          <li><a href="shoes.html">Shoes</a></li>
+          <li id="lg-bag">
+            <a class="active" href="cart.html"
+              ><i class="fa-solid fa-bag-shopping"></i
+            ></a>
+          </li>
+          <a href="#" id="close"><i class="fas fa-times"></i></a>
+        </ul>
+      </div>
+      <div id="mobile">
+        <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        <i id="bar" class="fas fa-outdent"></i>
+      </div>
     </section>
 
-    <section id="page-header" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/banner2.jpg');">
-        <h2>#Cart</h2>
-        <p>Add your coupon code & SAVE upto 70%!</p>
+    <section
+      id="page-header"
+      style="
+        background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+          ),
+          url('assets/banner2.jpg');
+      "
+    >
+      <h2>#Cart</h2>
+      <p>Add your coupon code & SAVE upto 70%!</p>
     </section>
 
     <section id="cart" class="section-p1">
-        <table width="100%">
-            <thead>
-                <tr>
-                    <td>Remove</td>
-                    <td>Image</td>
-                    <td>Product</td>
-                    <td>Price</td>
-                    <td>Quantity</td>
-                    <td>Subtotal</td>
-                </tr>
-            </thead>
-            <tbody id="cart-body">
-            </tbody>
-        </table>
+      <table width="100%">
+        <thead>
+          <tr>
+            <td>Remove</td>
+            <td>Image</td>
+            <td>Product</td>
+            <td>Price</td>
+            <td>Quantity</td>
+            <td>Subtotal</td>
+          </tr>
+        </thead>
+        <tbody id="cart-body"></tbody>
+      </table>
     </section>
 
     <section id="cart-add" class="section-p1">
-        <div id="coupon">
-            <h3>Apply Coupon</h3>
-            <div>
-                <input type="text" placeholder="Enter Your Coupon">
-                <button class="normal">Apply</button>
-            </div>
+      <div id="coupon">
+        <h3>Apply Coupon</h3>
+        <div>
+          <input type="text" placeholder="Enter Your Coupon" />
+          <button class="normal">Apply</button>
         </div>
+      </div>
 
-        <div id="subtotal">
-            <h3>Cart Totals</h3>
-            <table>
-                <tr>
-                    <td>Cart Subtotal</td>
-                    <td id="cart-subtotal">₹ 0.00</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>Free</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td id="cart-total"><strong>₹ 0.00</strong></td>
-                </tr>
-            </table>
-            <button class="normal">Proceed to checkout</button>
-        </div>
+      <div id="subtotal">
+        <h3>Cart Totals</h3>
+        <table>
+          <tr>
+            <td>Cart Subtotal</td>
+            <td id="cart-subtotal">₹ 0.00</td>
+          </tr>
+          <tr>
+            <td>Shipping</td>
+            <td>Free</td>
+          </tr>
+          <tr>
+            <td><strong>Total</strong></td>
+            <td id="cart-total"><strong>₹ 0.00</strong></td>
+          </tr>
+        </table>
+        <button class="normal">Proceed to checkout</button>
+      </div>
     </section>
 
     <footer class="section-p1">
-        <div class="col">
-            <h4>Contact</h4>
-            <p><strong>Address:</strong> 562 Wellington Road, Street 32, San Francisco</p>
-            <p><strong>Phone:</strong> +01 2222 365</p>
-        </div>
+      <div class="col">
+        <h4>Contact</h4>
+        <p>
+          <strong>Address:</strong> 562 Wellington Road, Street 32, San
+          Francisco
+        </p>
+        <p><strong>Phone:</strong> +01 2222 365</p>
+      </div>
     </footer>
 
     <script>
-        const bar = document.getElementById('bar');
-        const close = document.getElementById('close');
-        const nav = document.getElementById('navbar');
-        if (bar) { bar.addEventListener('click', () => { nav.classList.add('active'); }) }
-        if (close) { close.addEventListener('click', () => { nav.classList.remove('active'); }) }
+      const bar = document.getElementById("bar");
+      const close = document.getElementById("close");
+      const nav = document.getElementById("navbar");
+      if (bar) {
+        bar.addEventListener("click", () => {
+          nav.classList.add("active");
+        });
+      }
+      if (close) {
+        close.addEventListener("click", () => {
+          nav.classList.remove("active");
+        });
+      }
 
-        const cartBody = document.getElementById('cart-body');
-        const subtotalEl = document.getElementById('cart-subtotal');
-        const totalEl = document.getElementById('cart-total');
+      const cartBody = document.getElementById("cart-body");
+      const subtotalEl = document.getElementById("cart-subtotal");
+      const totalEl = document.getElementById("cart-total");
 
-        function renderCart() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            
-            cartBody.innerHTML = ''; 
-            let totalAmount = 0;
+      function renderCart() {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-            if(cart.length === 0) {
-                cartBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">Your cart is empty.</td></tr>';
-                subtotalEl.innerText = "₹ 0.00";
-                totalEl.innerText = "₹ 0.00";
-                return;
-            }
+        cartBody.innerHTML = "";
+        let totalAmount = 0;
 
-            cart.forEach((item, index) => {
-                // IMPORTANT: Replace ₹ instead of $
-                let priceStr = item.price.toString().replace('₹', '').replace('$', ''); 
-                let priceNum = parseFloat(priceStr);
-                
-                let subtotal = priceNum * item.quantity;
-                totalAmount += subtotal;
+        if (cart.length === 0) {
+          cartBody.innerHTML =
+            '<tr><td colspan="6" style="text-align:center; padding:20px;">Your cart is empty.</td></tr>';
+          subtotalEl.innerText = "₹ 0.00";
+          totalEl.innerText = "₹ 0.00";
+          return;
+        }
 
-                let row = document.createElement('tr');
-                row.innerHTML = `
+        cart.forEach((item, index) => {
+          // IMPORTANT: Replace ₹ instead of $
+          let priceStr = item.price
+            .toString()
+            .replace("₹", "")
+            .replace("$", "");
+          let priceNum = parseFloat(priceStr);
+
+          let subtotal = priceNum * item.quantity;
+          totalAmount += subtotal;
+
+          let row = document.createElement("tr");
+          row.innerHTML = `
                     <td><a href="#" onclick="removeItem(${index})"><i class="far fa-times-circle" style="color: #E0E0E0; font-size: 20px;"></i></a></td>
                     <td><img src="${item.image}" alt=""></td>
                     <td>${item.name} <br> <small>Size: ${item.size}</small></td>
                     <td>${item.price}</td>
-                    <td><input type="number" value="${item.quantity}" readonly></td>
+                    <td><input type="number" value="${
+                      item.quantity
+                    }" readonly></td>
                     <td>₹${subtotal.toFixed(2)}</td>
                 `;
-                cartBody.appendChild(row);
-            });
+          cartBody.appendChild(row);
+        });
 
-            subtotalEl.innerText = `₹ ${totalAmount.toFixed(2)}`;
-            totalEl.innerHTML = `<strong>₹ ${totalAmount.toFixed(2)}</strong>`;
-        }
+        subtotalEl.innerText = `₹ ${totalAmount.toFixed(2)}`;
+        totalEl.innerHTML = `<strong>₹ ${totalAmount.toFixed(2)}</strong>`;
+      }
 
-        function removeItem(index) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            renderCart();
-        }
-
+      function removeItem(index) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
         renderCart();
+      }
+      
+      renderCart();
     </script>
-</body>
+  </body>
 </html>
