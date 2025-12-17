@@ -42,8 +42,8 @@
                     <h4>₹120</h4>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn-cart">ADD TO CART</button>
-                    <button class="btn-buy">BUY NOW</button>
+                    <button class="btn-cart" onclick="addToCart(event, this, 'add')">ADD TO CART</button>
+                    <button class="btn-buy" onclick="addToCart(event, this, 'buy')">BUY NOW</button>
                 </div>
             </div>
 
@@ -55,8 +55,8 @@
                     <h4>₹95</h4>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn-cart">ADD TO CART</button>
-                    <button class="btn-buy">BUY NOW</button>
+                    <button class="btn-cart" onclick="addToCart(event, this, 'add')">ADD TO CART</button>
+                    <button class="btn-buy" onclick="addToCart(event, this, 'buy')">BUY NOW</button>
                 </div>
             </div>
 
@@ -68,8 +68,8 @@
                     <h4>₹55</h4>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn-cart">ADD TO CART</button>
-                    <button class="btn-buy">BUY NOW</button>
+                    <button class="btn-cart" onclick="addToCart(event, this, 'add')">ADD TO CART</button>
+                    <button class="btn-buy" onclick="addToCart(event, this, 'buy')">BUY NOW</button>
                 </div>
             </div>
             
@@ -81,12 +81,12 @@
                     <h4>₹75</h4>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn-cart">ADD TO CART</button>
-                    <button class="btn-buy">BUY NOW</button>
+                    <button class="btn-cart" onclick="addToCart(event, this, 'add')">ADD TO CART</button>
+                    <button class="btn-buy" onclick="addToCart(event, this, 'buy')">BUY NOW</button>
                 </div>
             </div>
             
-             <div class="pro" onclick="loadProduct(this)">
+            <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/n5.jpg" alt="">
                 <div class="des">
                     <span>Diesel</span>
@@ -94,12 +94,12 @@
                     <h4>₹105</h4>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn-cart">ADD TO CART</button>
-                    <button class="btn-buy">BUY NOW</button>
+                    <button class="btn-cart" onclick="addToCart(event, this, 'add')">ADD TO CART</button>
+                    <button class="btn-buy" onclick="addToCart(event, this, 'buy')">BUY NOW</button>
                 </div>
             </div>
             
-             <div class="pro" onclick="loadProduct(this)">
+            <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/n6.jpg" alt="">
                 <div class="des">
                     <span>H&M</span>
@@ -107,12 +107,12 @@
                     <h4>₹45</h4>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn-cart">ADD TO CART</button>
-                    <button class="btn-buy">BUY NOW</button>
+                    <button class="btn-cart" onclick="addToCart(event, this, 'add')">ADD TO CART</button>
+                    <button class="btn-buy" onclick="addToCart(event, this, 'buy')">BUY NOW</button>
                 </div>
             </div>
             
-             <div class="pro" onclick="loadProduct(this)">
+            <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/n7.jpg" alt="">
                 <div class="des">
                     <span>Zara</span>
@@ -120,12 +120,12 @@
                     <h4>₹85</h4>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn-cart">ADD TO CART</button>
-                    <button class="btn-buy">BUY NOW</button>
+                    <button class="btn-cart" onclick="addToCart(event, this, 'add')">ADD TO CART</button>
+                    <button class="btn-buy" onclick="addToCart(event, this, 'buy')">BUY NOW</button>
                 </div>
             </div>
             
-             <div class="pro" onclick="loadProduct(this)">
+            <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/n8.jpg" alt="">
                 <div class="des">
                     <span>Nike</span>
@@ -133,8 +133,8 @@
                     <h4>₹60</h4>
                 </div>
                 <div class="action-buttons">
-                    <button class="btn-cart">ADD TO CART</button>
-                    <button class="btn-buy">BUY NOW</button>
+                    <button class="btn-cart" onclick="addToCart(event, this, 'add')">ADD TO CART</button>
+                    <button class="btn-buy" onclick="addToCart(event, this, 'buy')">BUY NOW</button>
                 </div>
             </div>
         </div>
@@ -149,12 +149,40 @@
     </footer>
 
     <script>
-        // Updated loadProduct to ensure it works with the new buttons
         function loadProduct(element) {
             const img = element.getElementsByTagName('img')[0].src;
             const name = element.getElementsByTagName('h5')[0].innerText;
             const price = element.getElementsByTagName('h4')[0].innerText;
             window.location.href = `sproduct.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}`;
+        }
+        
+        // NEW: Function to handle 'Add to Cart' & 'Buy Now' button clicks
+        function addToCart(event, btn, action) {
+            event.stopPropagation(); // Prevents clicking the card (which would open details page)
+            
+            const parent = btn.closest('.pro');
+            const img = parent.querySelector('img').src;
+            const name = parent.querySelector('h5').innerText;
+            const price = parent.querySelector('h4').innerText;
+
+            const product = {
+                id: Date.now(),
+                image: img,
+                name: name,
+                price: price,
+                size: "Select Size", // Default size since we are adding from list
+                quantity: 1
+            };
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(product);
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            if (action === 'buy') {
+                window.location.href = 'cart.html';
+            } else {
+                alert('Item added to cart!');
+            }
         }
 
         const bar = document.getElementById('bar');
