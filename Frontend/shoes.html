@@ -39,90 +39,120 @@
                 <div class="des">
                     <span>Nike</span>
                     <h5>Sport Running Shoes</h5>
-                    <h4>$140</h4>
+                    <h4>₹140</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
             <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/shoes2.png" alt="">
                 <div class="des">
                     <span>Puma</span>
                     <h5>Grey Trainers</h5>
-                    <h4>$110</h4>
+                    <h4>₹110</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
             <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/shoes3.png" alt="">
                 <div class="des">
                     <span>Nike</span>
                     <h5>Orange Runners</h5>
-                    <h4>$135</h4>
+                    <h4>₹135</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
             <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/shoes4.png" alt="">
                 <div class="des">
                     <span>Adidas</span>
                     <h5>Black Boost</h5>
-                    <h4>$150</h4>
+                    <h4>₹150</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
             <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/shoes5.png" alt="">
                 <div class="des">
                     <span>Reebok</span>
                     <h5>Grey Classic</h5>
-                    <h4>$95</h4>
+                    <h4>₹95</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
             <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/shoes6.png" alt="">
                 <div class="des">
                     <span>Nike</span>
                     <h5>Blue Racer</h5>
-                    <h4>$125</h4>
+                    <h4>₹125</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
             <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/shoes7.png" alt="">
                 <div class="des">
                     <span>Adidas</span>
                     <h5>Yellow Sneakers</h5>
-                    <h4>$110</h4>
+                    <h4>₹110</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
             <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/shoes8.png" alt="">
                 <div class="des">
                     <span>Nike</span>
                     <h5>Red & Black</h5>
-                    <h4>$145</h4>
+                    <h4>₹145</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
             <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/shoes9.png" alt="">
                 <div class="des">
                     <span>Campus</span>
                     <h5>Green & Black</h5>
-                    <h4>$145</h4>
+                    <h4>₹145</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
             <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/shoes10.png" alt="">
                 <div class="des">
                     <span>Campus</span>
                     <h5>Green & White</h5>
-                    <h4>$145</h4>
+                    <h4>₹145</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
         </div>
     </section>
@@ -140,8 +170,7 @@
             const img = element.querySelector('img').src;
             const name = element.querySelector('h5').innerText;
             const price = element.querySelector('h4').innerText;
-            
-            // --- UPDATED LINE BELOW: Added &cat=shoes ---
+            // Preserved the 'cat=shoes' parameter for shoe sizing logic
             window.location.href = `sproduct.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}&cat=shoes`;
         }
 

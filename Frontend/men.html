@@ -39,9 +39,12 @@
                 <div class="des">
                     <span>Prada</span>
                     <h5>Formal Blue Shirt</h5>
-                    <h4>$120</h4>
+                    <h4>₹120</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
 
             <div class="pro" onclick="loadProduct(this)">
@@ -49,9 +52,12 @@
                 <div class="des">
                     <span>Raymond</span>
                     <h5>Grey Formal Shirt</h5>
-                    <h4>$95</h4>
+                    <h4>₹95</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
 
             <div class="pro" onclick="loadProduct(this)">
@@ -59,9 +65,12 @@
                 <div class="des">
                     <span>Levis</span>
                     <h5>White Casual Shirt</h5>
-                    <h4>$55</h4>
+                    <h4>₹55</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
             
             <div class="pro" onclick="loadProduct(this)">
@@ -69,45 +78,64 @@
                 <div class="des">
                     <span>Wrogn</span>
                     <h5>Camo Print Shirt</h5>
-                    <h4>$75</h4>
+                    <h4>₹75</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
+            
              <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/n5.jpg" alt="">
                 <div class="des">
                     <span>Diesel</span>
                     <h5>Denim Blue Shirt</h5>
-                    <h4>$105</h4>
+                    <h4>₹105</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
+            
              <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/n6.jpg" alt="">
                 <div class="des">
                     <span>H&M</span>
                     <h5>Cotton Shorts</h5>
-                    <h4>$45</h4>
+                    <h4>₹45</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
+            
              <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/n7.jpg" alt="">
                 <div class="des">
                     <span>Zara</span>
                     <h5>Brown Corduroy Shirt</h5>
-                    <h4>$85</h4>
+                    <h4>₹85</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
+            
              <div class="pro" onclick="loadProduct(this)">
                 <img src="assets/n8.jpg" alt="">
                 <div class="des">
                     <span>Nike</span>
                     <h5>Black Sports Shirt</h5>
-                    <h4>$60</h4>
+                    <h4>₹60</h4>
                 </div>
-                <a href="#"><i class="fa-solid fa-cart-shopping cart"></i></a>
+                <div class="action-buttons">
+                    <button class="btn-cart">ADD TO CART</button>
+                    <button class="btn-buy">BUY NOW</button>
+                </div>
             </div>
         </div>
     </section>
@@ -121,16 +149,11 @@
     </footer>
 
     <script>
-        // Function to capture product details and redirect
+        // Updated loadProduct to ensure it works with the new buttons
         function loadProduct(element) {
-            // Find the image source inside the clicked div
             const img = element.getElementsByTagName('img')[0].src;
-            // Find the Name (h5)
             const name = element.getElementsByTagName('h5')[0].innerText;
-            // Find the Price (h4)
             const price = element.getElementsByTagName('h4')[0].innerText;
-
-            // Redirect to sproduct.html with parameters
             window.location.href = `sproduct.html?name=${encodeURIComponent(name)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}`;
         }
 

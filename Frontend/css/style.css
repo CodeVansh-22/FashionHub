@@ -511,3 +511,131 @@ footer a {
     width: 100%;
   }
 }
+/* --- Paste this at the very bottom of style.css --- */
+
+/* Flipkart Style Buttons */
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.btn-cart,
+.btn-buy {
+  flex: 1; /* Make them equal width */
+  font-size: 11px; /* Smaller font for mobile fit */
+  font-weight: 700;
+  padding: 10px 0;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: 0.2s;
+  text-transform: uppercase;
+}
+
+.btn-cart {
+  background-color: #ff9f00; /* Flipkart Yellow */
+}
+.btn-cart:hover {
+  background-color: #e68f00;
+}
+
+.btn-buy {
+  background-color: #fb641b; /* Flipkart Orange */
+}
+.btn-buy:hover {
+  background-color: #e05a18;
+}
+
+/* --- Mobile Responsive Updates --- */
+@media (max-width: 799px) {
+  .section-p1 {
+    padding: 40px 20px;
+  }
+
+  /* Navbar adjustments */
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    height: 100vh;
+    width: 300px;
+    background-color: var(--bg-surface);
+    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.5);
+    padding: 80px 0 0 10px;
+    transition: 0.3s;
+    z-index: 1000;
+  }
+  #navbar.active {
+    right: 0px;
+  }
+  #mobile {
+    display: flex;
+    align-items: center;
+  }
+  #mobile i {
+    color: var(--text-main);
+    font-size: 24px;
+    padding-left: 20px;
+  }
+  #close {
+    display: initial;
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: var(--text-main);
+    font-size: 24px;
+  }
+  #lg-bag {
+    display: none;
+  }
+
+  /* FORCE 2 COLUMNS ON MOBILE */
+  .pro-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 items per row */
+    gap: 10px;
+  }
+
+  .pro {
+    padding: 10px; /* Reduce padding */
+    min-width: 0; /* Prevents overflow */
+  }
+
+  .pro img {
+    height: auto;
+    margin-bottom: 5px;
+  }
+
+  .action-buttons {
+    flex-direction: column; /* Stack buttons on very small screens if needed, or keep row */
+  }
+
+  /* Single Product Page Mobile */
+  #prodetails {
+    display: flex;
+    flex-direction: column;
+  }
+  #prodetails .single-pro-image {
+    width: 100%;
+    margin-right: 0px;
+  }
+  #prodetails .single-pro-details {
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Even smaller screens */
+  .action-buttons .btn-cart,
+  .action-buttons .btn-buy {
+    font-size: 9px;
+    padding: 8px 0;
+  }
+}

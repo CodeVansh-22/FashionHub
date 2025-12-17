@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Specific dark mode fix for the quantity input in cart */
         #cart table input {
             background-color: var(--bg-surface);
             color: var(--text-main);
@@ -73,7 +72,7 @@
             <table>
                 <tr>
                     <td>Cart Subtotal</td>
-                    <td id="cart-subtotal">$ 0.00</td>
+                    <td id="cart-subtotal">₹ 0.00</td>
                 </tr>
                 <tr>
                     <td>Shipping</td>
@@ -81,7 +80,7 @@
                 </tr>
                 <tr>
                     <td><strong>Total</strong></td>
-                    <td id="cart-total"><strong>$ 0.00</strong></td>
+                    <td id="cart-total"><strong>₹ 0.00</strong></td>
                 </tr>
             </table>
             <button class="normal">Proceed to checkout</button>
@@ -103,7 +102,6 @@
         if (bar) { bar.addEventListener('click', () => { nav.classList.add('active'); }) }
         if (close) { close.addEventListener('click', () => { nav.classList.remove('active'); }) }
 
-        // --- RENDER CART FROM LOCAL STORAGE ---
         const cartBody = document.getElementById('cart-body');
         const subtotalEl = document.getElementById('cart-subtotal');
         const totalEl = document.getElementById('cart-total');
@@ -111,19 +109,21 @@
         function renderCart() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             
-            cartBody.innerHTML = ''; // Clear current display
+            cartBody.innerHTML = ''; 
             let totalAmount = 0;
 
             if(cart.length === 0) {
                 cartBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">Your cart is empty.</td></tr>';
-                subtotalEl.innerText = "$ 0.00";
-                totalEl.innerText = "$ 0.00";
+                subtotalEl.innerText = "₹ 0.00";
+                totalEl.innerText = "₹ 0.00";
                 return;
             }
 
             cart.forEach((item, index) => {
-                // Parse price string like "$139.00" to number 139.00
-                let priceNum = parseFloat(item.price.replace('$', ''));
+                // IMPORTANT: Replace ₹ instead of $
+                let priceStr = item.price.toString().replace('₹', '').replace('$', ''); 
+                let priceNum = parseFloat(priceStr);
+                
                 let subtotal = priceNum * item.quantity;
                 totalAmount += subtotal;
 
@@ -134,24 +134,22 @@
                     <td>${item.name} <br> <small>Size: ${item.size}</small></td>
                     <td>${item.price}</td>
                     <td><input type="number" value="${item.quantity}" readonly></td>
-                    <td>$${subtotal.toFixed(2)}</td>
+                    <td>₹${subtotal.toFixed(2)}</td>
                 `;
                 cartBody.appendChild(row);
             });
 
-            subtotalEl.innerText = `$ ${totalAmount.toFixed(2)}`;
-            totalEl.innerHTML = `<strong>$ ${totalAmount.toFixed(2)}</strong>`;
+            subtotalEl.innerText = `₹ ${totalAmount.toFixed(2)}`;
+            totalEl.innerHTML = `<strong>₹ ${totalAmount.toFixed(2)}</strong>`;
         }
 
-        // Remove item function
         function removeItem(index) {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart.splice(index, 1); // Remove item at specific index
-            localStorage.setItem('cart', JSON.stringify(cart)); // Update storage
-            renderCart(); // Re-render table
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
         }
 
-        // Initial render
         renderCart();
     </script>
 </body>
